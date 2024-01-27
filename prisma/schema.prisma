@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "cockroachdb"
   url      = env("DATABASE_URL")
 }
 
@@ -14,7 +14,8 @@ model Profile {
   id String @id @default(uuid())
   userId String @unique
   name String
-  image String @db.Text
+  imageUrl String @db.String()
+  email String @db.String()
 
   servers Server[]
   members Member[]
@@ -28,7 +29,7 @@ model Profile {
 model Server{
   id String @id @default(uuid())
   name String
-  imageUrl String @db.Text
+  imageUrl String @db.String()
   inviteCode String @unique
 
   profileId String
