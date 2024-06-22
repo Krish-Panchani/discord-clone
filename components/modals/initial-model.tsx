@@ -1,5 +1,6 @@
 "use client";
 
+import axios from "axios";
 import { use, useEffect, useState } from "react";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -25,6 +26,7 @@ import {
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { FileUpload } from "../file-upload";
+import { useRouter } from "next/navigation";
 
 // Form validation schema
 const formSchema = z.object({
@@ -40,6 +42,9 @@ export const InitialModal = () => {
 
     // Use a state to check if the component is mounted
     const [isMounted, setIsMounted] = useState(false);
+
+    const router = useRouter();
+
     useEffect(() => {
         // Set the component as mounted
         setIsMounted(true);
@@ -60,7 +65,16 @@ export const InitialModal = () => {
 
     // Handle the form submission
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
-        console.log(values);
+        try {
+            await axios.post("/api/server", values); // Send the form data to the server
+
+            // Reset the form and refresh the router
+            form.reset();
+            router.refresh();
+            window.location.reload();
+        } catch (error) {
+            
+        }
     };
 
     // If the component is not mounted, return null
