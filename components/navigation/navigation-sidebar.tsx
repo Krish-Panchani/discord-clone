@@ -40,11 +40,11 @@ export const NavigationSidebar = async () => {
              />
              <ScrollArea className="flex-1 w-full">
                 {servers.map((server) =>
-                <div key={server.id}>
+                <div key={server.id} className="mb-4">
                     <NavigationItem 
                     id={server.id}
-                    imageUrl={server.imageUrl}
                     name={server.name}
+                    imageUrl={server.imageUrl}
                      />
                 </div>
                 )}
