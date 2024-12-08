@@ -1,0 +1,5 @@
+
+#everytime when schema change
+npx prisma generate
+
+npx prisma db push
