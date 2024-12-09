@@ -15,12 +15,12 @@ import {
 import { useModal } from "@/hooks/use-modal-store";
 import { Button } from "@/components/ui/button";
 
-export const DeleteServerModal = () => {
+export const DeleteChannelModal = () => {
   // Use the useModal hook to manage the model state
   const { isOpen, onClose, type, data } = useModal();
   const router = useRouter();
 
-  const isModalOpen = isOpen && type === "deleteServer";
+  const isModalOpen = isOpen && type === "deleteChannel";
   const { server } = data;
 
   const [isLoading, setIsLoading] = useState(false);

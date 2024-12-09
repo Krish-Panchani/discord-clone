@@ -11,7 +11,7 @@ import {
   DialogDescription,
 } from "../ui/dialog";
 
-import { useModel } from "@/hooks/use-modal-store";
+import { useModal } from "@/hooks/use-modal-store";
 
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -19,8 +19,8 @@ import { Button } from "@/components/ui/button";
 import { useOrigin } from "@/hooks/use-origin";
 
 export const InviteModal = () => {
-  // Use the useModel hook to manage the model state
-  const { onOpen, isOpen, onClose, type, data } = useModel();
+  // Use the useModal hook to manage the model state
+  const { onOpen, isOpen, onClose, type, data } = useModal();
   const origin = useOrigin();
 
   const isModalOpen = isOpen && type === "invite";

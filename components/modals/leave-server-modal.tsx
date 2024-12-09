@@ -12,12 +12,12 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 
-import { useModel } from "@/hooks/use-modal-store";
+import { useModal } from "@/hooks/use-modal-store";
 import { Button } from "@/components/ui/button";
 
 export const LeaveServerModal = () => {
-  // Use the useModel hook to manage the model state
-  const { isOpen, onClose, type, data } = useModel();
+  // Use the useModal hook to manage the model state
+  const { isOpen, onClose, type, data } = useModal();
   const router = useRouter();
 
   const isModalOpen = isOpen && type === "leaveServer";

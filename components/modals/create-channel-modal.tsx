@@ -25,7 +25,7 @@ import {
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { useParams, useRouter } from "next/navigation";
-import { useModel } from "@/hooks/use-modal-store";
+import { useModal } from "@/hooks/use-modal-store";
 import {
   Select,
   SelectContent,
@@ -49,8 +49,8 @@ const formSchema = z.object({
 });
 
 export const CreateChannelModal = () => {
-  // Use the useModel hook to manage the model state
-  const { isOpen, onClose, type, data } = useModel();
+  // Use the useModal hook to manage the model state
+  const { isOpen, onClose, type, data } = useModal();
   const router = useRouter();
   const params = useParams();
 

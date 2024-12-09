@@ -24,7 +24,7 @@ import {
 } from "../ui/dialog";
 
 import { ServerWithMembersWithProfile } from "@/types";
-import { useModel } from "@/hooks/use-modal-store";
+import { useModal } from "@/hooks/use-modal-store";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { UserAvatar } from "@/components/user-avatar";
 
@@ -51,8 +51,8 @@ const roleIconMap = {
 
 export const MembersModal = () => {
   const router = useRouter();
-  // Use the useModel hook to manage the model state
-  const { onOpen, isOpen, onClose, type, data } = useModel();
+  // Use the useModal hook to manage the model state
+  const { onOpen, isOpen, onClose, type, data } = useModal();
   const [loadingId, setLoadingId] = useState("");
 
   // Check if the modal is open and the type is members

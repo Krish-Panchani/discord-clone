@@ -4,7 +4,7 @@ import { ServerWithMembersWithProfile } from "@/types";
 import { ChannelType, MemberRole } from "@prisma/client";
 import { ActionTooltip } from "@/components/action-tooltip";
 import { Plus, Settings } from "lucide-react";
-import { useModel } from "@/hooks/use-modal-store";
+import { useModal } from "@/hooks/use-modal-store";
 
 interface ServerSectionProps {
   label: string;
@@ -21,7 +21,7 @@ export const ServerSection = ({
   channelType,
   server,
 }: ServerSectionProps) => {
-  const { onOpen } = useModel();
+  const { onOpen } = useModal();
 
   return (
     <div className="flex items-center justify-between py-2">
