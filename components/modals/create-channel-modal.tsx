@@ -33,6 +33,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useEffect } from "react";
 
 // Form validation schema
 const formSchema = z.object({
@@ -49,20 +50,30 @@ const formSchema = z.object({
 
 export const CreateChannelModal = () => {
   // Use the useModel hook to manage the model state
-  const { isOpen, onClose, type } = useModel();
+  const { isOpen, onClose, type, data } = useModel();
   const router = useRouter();
   const params = useParams();
 
   const isModalOpen = isOpen && type === "createChannel";
+  const { channelType } = data;
 
   // Use react-hook-form to manage the form state
   const form = useForm({
     resolver: zodResolver(formSchema), // Use the zod resolver to validate the form
     defaultValues: {
       name: "",
-      type: ChannelType.TEXT,
+      type: channelType || ChannelType.TEXT,
     },
   });
+
+  // Set the channel type if it exists
+  useEffect(() => {
+    if (channelType) {
+      form.setValue("type", channelType);
+    } else {
+      form.setValue("type", ChannelType.TEXT);
+    }
+  }, [channelType, form]);
 
   // Check if the form is submitting
   const isLoading = form.formState.isSubmitting;
