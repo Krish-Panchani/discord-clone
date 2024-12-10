@@ -3,7 +3,7 @@ import { getAuth } from "@clerk/nextjs/server";
 import { db } from "@/lib/db";
 
 
-export const currentProfile = async (req: NextApiRequest) => {
+export const currentProfilePages = async (req: NextApiRequest) => {
 
     // Get the user ID from the session
     const { userId } = getAuth(req);
