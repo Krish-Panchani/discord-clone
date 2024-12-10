@@ -11,7 +11,7 @@ export type ServerWithMembersWithProfile = Server & {
 
 
 export type NextApiResponseServerIo = NextApiResponse & {
-    sockrt: Socket & {
+    socket: Socket & {
         server: NetServer & {
             io: SocketIOServer;
         }
