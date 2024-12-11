@@ -12,6 +12,8 @@ import { DeleteServerModal } from "@/components/modals/delete-server-modal";
 import { DeleteChannelModal } from "@/components/modals/delete-channel-modal";
 import { EditChannelModal } from "@/components/modals/edit-channel-modal";
 import { MessageFileModal } from "@/components/modals/message-file-modal";
+import { Delete } from "lucide-react";
+import { DeleteMessageModal } from "../modals/delete-message-modal";
 
 export const ModelProvider = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -36,6 +38,7 @@ export const ModelProvider = () => {
       <DeleteChannelModal />
       <EditChannelModal />
       <MessageFileModal />
+      <DeleteMessageModal />
     </>
   );
 };
