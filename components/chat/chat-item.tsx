@@ -59,6 +59,7 @@ export const ChatItem = ({
   const [isEditing, setIsEditing] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
 
+  // Handle the escape key to cancel editing
   useEffect(() => {
     const handleKeyDown = (event: any) => {
       if (event.key === "Escape" || event.keyCode === 27) {
@@ -71,6 +72,7 @@ export const ChatItem = ({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
+  // Define the form with the content
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -80,6 +82,7 @@ export const ChatItem = ({
 
   const isLoading = form.formState.isSubmitting;
 
+  //Submit the edited message
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       const url = qs.stringifyUrl({
@@ -93,6 +96,7 @@ export const ChatItem = ({
     }
   };
 
+  //Reset the form when the content changes
   useEffect(() => {
     form.reset({
       content: content,
