@@ -6,7 +6,7 @@ import qs from "query-string";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { Member, MemberRole, Profile } from "@prisma/client";
+import { Member, MemberRole, Profile } from "@/generated/prisma/browser";
 import { UserAvatar } from "@/components/user-avatar";
 import { ActionTooltip } from "@/components/action-tooltip";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";

@@ -6,33 +6,35 @@ import { ChatMessages } from "@/components/chat/chat-messages";
 import { MediaRoom } from "@/components/media-room";
 
 import { currentProfile } from "@/lib/current-profile";
-import { redirectToSignIn } from "@clerk/nextjs";
-import { ChannelType } from "@prisma/client";
+import { auth } from "@clerk/nextjs/server";
+import { ChannelType } from "@/generated/prisma/browser";
 import { redirect } from "next/navigation";
 
 interface ChannelIdPageProps {
-  params: {
+  params: Promise<{
     serverId: string;
     channelId: string;
-  };
+  }>;
 }
 
 const ChannelIdPage = async ({ params }: ChannelIdPageProps) => {
+  const { serverId, channelId } = await params;
   const profile = await currentProfile();
 
   if (!profile) {
-    return redirectToSignIn;
+    const { redirectToSignIn } = await auth();
+    return redirectToSignIn();
   }
 
   const channel = await db.channel.findUnique({
     where: {
-      id: params.channelId,
+      id: channelId,
     },
   });
 
   const member = await db.member.findFirst({
     where: {
-      serverId: params.serverId,
+      serverId: serverId,
       profileId: profile.id,
     },
   });

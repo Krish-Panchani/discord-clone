@@ -1,6 +1,6 @@
 "use client";
 import { ServerWithMembersWithProfile } from "@/types";
-import { MemberRole } from "@prisma/client";
+import { MemberRole } from "@/generated/prisma/browser";
 import {
   ChevronDown,
   LogOut,

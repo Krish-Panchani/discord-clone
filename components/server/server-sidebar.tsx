@@ -1,4 +1,4 @@
-import { ChannelType, MemberRole } from "@prisma/client";
+import { ChannelType, MemberRole } from "@/generated/prisma/browser";
 import { redirect } from "next/navigation";
 import {
   Divide,

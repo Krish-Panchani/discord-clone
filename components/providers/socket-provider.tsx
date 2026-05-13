@@ -2,7 +2,6 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 import { io as ClientIO } from "socket.io-client";
-import { set } from "zod";
 
 type SocketContextType = {
   socket: any | null;

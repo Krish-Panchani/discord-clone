@@ -1,10 +1,10 @@
-import { auth } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 import { db } from "./db";
 
 export const currentProfile = async () => {
   try {
     // Get the user ID from the session
-    const { userId } = auth();
+    const { userId } = await auth();
 
     // If the user is not logged in, return null
     if (!userId) {

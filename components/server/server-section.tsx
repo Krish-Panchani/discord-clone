@@ -1,7 +1,7 @@
 "use client";
 
 import { ServerWithMembersWithProfile } from "@/types";
-import { ChannelType, MemberRole } from "@prisma/client";
+import { ChannelType, MemberRole } from "@/generated/prisma/browser";
 import { ActionTooltip } from "@/components/action-tooltip";
 import { Plus, Settings } from "lucide-react";
 import { useModal } from "@/hooks/use-modal-store";
